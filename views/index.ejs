@@ -2,16 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <title>Test</title>
+  <title>Weather App</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src='/js/index.js'></script>
 </head>
 <body>
   <div class="container">
     <fieldset>
       <form action="/" method="post">
-        <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-        <input type="submit" class="ghost-button" value="Get Weather">
+        <input id='city' name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+        <input id='btn' type="submit" class="ghost-button" value="Get Weather">
       </form>
       <% if(weather !== null){ %>
         <p><%= weather %></p>
@@ -22,5 +23,29 @@
       <% } %>
     </fieldset>
   </div>
+
+  <script type="text/javascript">
+
+const onAnythingSaid = text =>
+  console.log(`Interim text: ${text}`)
+
+const onFinalised = text =>{
+  var input =  document.getElementById('city')
+  input.value = text
+  var l = document.getElementById('btn')
+  l.click()
+}
+
+     if (!('webkitSpeechRecognition' in window)) {
+  throw new Error("This browser doesn't support speech recognition. Try Google Chrome.")
+    }
+  try {
+  const listener = new SpeechToText(onAnythingSaid, onFinalised);
+  listener.startListening()
+} catch (error) {
+  console.log(error)
+}
+  </script>
+
 </body>
 </html>
