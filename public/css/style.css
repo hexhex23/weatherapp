@@ -1,0 +1,10 @@
+body {
+  margin-top: 20px;
+  font-family: 'Inconsolata', monospace;
+  font-size: 12px;
+}
+
+.container {
+  width: 400px;
+  margin: auto;
+}
